@@ -47,6 +47,13 @@ int randomIndex(int i, int j){
     int random = i + (rand() % j);
     return random;
 }
+
+bool stackable(int x1, int y1,int x2,int y2){
+    if (x2 <= x1 || y2 <= y1){
+        return true;
+    }
+    return false;
+}
 int main()
 {
     ifstream creatures_file("creatures.txt", ifstream::in);
@@ -58,7 +65,9 @@ int main()
     vector<creature> creatures;
     string doublespace = "\t";
     vector<string> sayings;
-
+    int stackSize;
+    int lastCard[2] = {0,0};
+    
     // create list of sayings
     while(getline(sayings_file, saying)){
         sayings.push_back(saying);
@@ -78,8 +87,21 @@ int main()
     // for(creature c : creatures){
     //     cout << c.name << " " << c.dimensions[0] << " " <<c.dimensions[1] << "\n";
     // }
-    srand((unsigned) (int) 37);
-    cout << randomIndex(0, 14);
+
+    // visit a random creature
+    for(int i=14; i>0; i--){
+        int index = randomIndex(0, i);
+        string say = sayings[index];
+        string name = creatures[index].name;
+        cout << name <<" "<< say << "\n";
+        if(stackable())
+        // pop from the vector
+        // creatures.erase(creatures.begin() + index);
+    }
+    
+    // cout << "wtf";
+    // srand((unsigned) (int) 37);
+    // cout << randomIndex(0, 14);
 
 
     
