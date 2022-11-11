@@ -93,9 +93,12 @@ int main()
         int index = randomIndex(0, i);
         string say = sayings[index];
         string name = creatures[index].name;
-        cout << name <<" "<< say << "\n";
-        if(stackable())
-        // pop from the vector
+        // cout << name <<" "<< say << "\n";
+
+        lastCard = {creatures[index].dimensions[0], creatures[index].dimensions[1]};
+        if(stackable(lastCard[0],lastCard[1], creatures[index].dimensions[0], creatures[index].dimensions[1])){
+            cout << "stackable";
+        }
         // creatures.erase(creatures.begin() + index);
     }
     
